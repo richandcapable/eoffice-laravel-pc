@@ -68,6 +68,6 @@ class VisiController extends Controller
         $data = Visi::findOrFail('1');
 
         $data->update($request->all());
-        return redirect()->back();
+        return redirect()->route('layouts.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 }

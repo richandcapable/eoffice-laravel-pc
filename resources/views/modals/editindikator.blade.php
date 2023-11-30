@@ -15,10 +15,11 @@
                      @csrf
                      <div class="form-group">
                          <label for="misiTujuan">Misi</label>
+                         <p>{{ $m->misi }}
                      </div>
-
                      <div class="form-group">
                          <label for="misiTujuan">Tujuan</label>
+                         <p>{{ $t->tujuan }}</p>
                      </div>
 
                      <div class="form-group">

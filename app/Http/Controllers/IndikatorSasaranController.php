@@ -37,13 +37,13 @@ class IndikatorSasaranController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.detailsasaran')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('layouts.detailsasaran')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
         $i = IndikatorSasaran::find($id);
 
         $i->update($request->all());
-        return redirect('/detailsasaran');
+        return redirect('/detailsasaran')->with(['success' => 'Indikator Berhasil Diubah!']);
     }
 }

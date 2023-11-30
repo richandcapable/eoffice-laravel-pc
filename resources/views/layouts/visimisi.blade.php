@@ -17,6 +17,8 @@
 </head>
 
 <body id="page-top">
+    @include('sweetalert::alert')
+
     <div id="wrapper">
         <!-- Sidebar -->
         @include('layouts.sidebar')
@@ -35,26 +37,26 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered w-100" style="background-color: white;">
-                                    <tr>
-                                        <td>
-                                            <b>
-                                                VISI
-                                                <button id="editVisiBtn"
-                                                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm rounded-pill float-right"
-                                                    data-toggle="modal" data-target="#editVisiModal">
-                                                    Edit Visi
-                                                </button>
-                                            </b>
-                                            @include('modals.editvisi')
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            @foreach ($visis as $v)
+                                    @foreach ($visis as $v)
+                                        <tr>
+                                            <td>
+                                                <b>
+                                                    VISI
+                                                    <button id="editVisiBtn"
+                                                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm rounded-pill float-right"
+                                                        data-toggle="modal" data-target="#editVisiModal">
+                                                        Edit Visi
+                                                    </button>
+                                                </b>
+                                                @include('modals.editvisi')
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 {{ $v->visi }}
-                                            @endforeach
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -121,7 +123,7 @@
                         </table>
                     </div>
                     <div class="text-left">
-                        <button id="tambahMisiBtn" class="btn btn-outline-primary" style="margin-top: 10px;"
+                        <button id="tambahMisiBtn" class="btn btn-outline-success" style="margin-top: 10px;"
                             data-toggle="modal" data-target="#tambahMisiModal">
                             <i class="fas fa-plus">
                             </i>
@@ -141,113 +143,34 @@
                             <tr>
                                 <td>
                                     <b>
-                                        Tujuan
+                                        TUJUAN
                                     </b>
                                 </td>
                             </tr>
-
-                            @foreach ($tujuan as $t)
-                                <tr>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-cog">
-                                                </i>
-                                                <!-- Ikon setelan (setting) -->
-                                            </button>
-                                            <p class="ml-2">
-                                                <b>
-                                                    Tujuan {{ $loop->iteration }}.
-                                                </b>
-                                                {{ $t->tujuan }}
-                                            </p>
-
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" data-tip="editTujuan" data-toggle="modal"
-                                                    data-target="#editTujuan">
-                                                    Edit
-                                                </a>
-                                                <a class="dropdown-item" data-tip="hapusTujuan" data-toggle="modal"
-                                                    data-target="#hapusTujuan">
-                                                    Hapus
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <!-- Modal Edit Tujuan -->
-                                <div class="modal fade" id="editTujuan" tabindex="-1" role="dialog"
-                                    aria-labelledby="editTujuanModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editTujuanModalLabel">
-                                                    Edit Tujuan
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">
-                                                        &times;
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Isi form untuk mengubah tujuan -->
-                                                <form action="/tujuan-update/{{ $t->id }}'" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @method('PUT') @csrf
-                                                    <div class="form-group">
-                                                        <label for="newTujuan">
-                                                            Tujuan Baru
-                                                        </label>
-                                                        <input type="text" class="form-control" name="tujuan"
-                                                            placeholder="Masukkan tujuan baru">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Simpan Perubahan
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </div>
+                            <tr>
+                                <td>
+                                    @foreach ($misi as $m)
+                                        <p>
+                                            <b>
+                                                Misi {{ $loop->iteration }}.
+                                            </b>
+                                            {{ $m->misi }}
+                                        </p>
+                                </td>
+                            </tr>
+                                    @foreach ($tujuan as $t)
+                            <tr>
+                                <td>
+                                    <div class="text-left">
+                                        <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
+                                            data-target="#tambahTujuanModal">
+                                            <i class="fas fa-plus">
+                                            </i>
+                                            Tambah Tujuan Misi {{ $loop->iteration }}
+                                        </button>
                                     </div>
-                                </div>
-                                <!-- Modal Hapus Tujuan -->
-                                <div class="modal fade" id="hapusTujuan" tabindex="-1" role="dialog"
-                                    aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="hapusTujuanModalLabel">Hapus Tujuan</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Isi pesan konfirmasi penghapusan -->
-                                                <p>Anda yakin ingin menghapus tujuan ini?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Batal</button>
-                                                <!-- Tombol konfirmasi penghapusan -->
-                                                @foreach ($tujuan as $t)
-                                                    <form action="/hapus-tujuan/{{ $t->id }}" method="POST"
-                                                        enctype="multipart/form-data">
-                                                        @method('DELETE')
-                                                        <!-- Menggunakan DELETE method untuk menghapus data -->
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger"
-                                                            id="konfirmasiHapusTujuan">Hapus</button>
-                                                    </form>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <!-- Modal -->
+                                    @include('modals.tambahtujuan')
 
                     </div>
                 </div>
@@ -258,38 +181,117 @@
     </div>
     </div>
     </div>
+    
     </td>
     </tr>
-
     <tr>
         <td>
-            @foreach ($misi as $m)
-                <p>
-                    <b>
-                        Misi {{ $loop->iteration }}.
-                    </b>
-                    {{ $m->misi }}
-                </p>
-        </td>
-    <tr>
-        <td>
-            <div class="text-left">
-                <button class="btn btn-outline-primary" style="margin-top: 10px;" data-toggle="modal"
-                    data-target="#tambahTujuanModal">
-                    <i class="fas fa-plus">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog">
                     </i>
-                    Tambah Tujuan Misi {{ $loop->iteration }}
+                    <!-- Ikon setelan (setting) -->
                 </button>
+                <p class="ml-2">
+                    <b>
+                        Tujuan {{ $loop->iteration }}.
+                    </b>
+                    {{ $t->tujuan }}
+                </p>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" data-tip="editTujuan" data-toggle="modal"
+                        data-target="#editTujuan">
+                        Edit
+                    </a>
+                    <a class="dropdown-item" data-tip="hapusTujuan" data-toggle="modal"
+                        data-target="#hapusTujuan">
+                        Hapus
+                    </a>
+                </div>
             </div>
-            <!-- Modal -->
-            @include('modals.tambahtujuan')
+        </td>
+    </tr>
+
+    <!-- Modal Edit Tujuan -->
+    <div class="modal fade" id="editTujuan" tabindex="-1" role="dialog"
+        aria-labelledby="editTujuanModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editTujuanModalLabel">
+                        Edit Tujuan
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Isi form untuk mengubah tujuan -->
+                    <form action="/tujuan-update/{{ $t->id }}'" method="POST"
+                        enctype="multipart/form-data">
+                        @method('PUT') @csrf
+                        <div class="form-group">
+                            <label for="newTujuan">
+                                Tujuan Baru
+                            </label>
+                            <input type="text" class="form-control" name="tujuan"
+                                placeholder="Masukkan tujuan baru" value="w{{ $t->tujuan  }}">
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Simpan Perubahan
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Hapus Tujuan -->
+    <div class="modal fade" id="hapusTujuan" tabindex="-1" role="dialog"
+        aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hapusTujuanModalLabel">Hapus Tujuan</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Isi pesan konfirmasi penghapusan -->
+                    <p>Anda yakin ingin menghapus tujuan ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Batal</button>
+                    <!-- Tombol konfirmasi penghapusan -->
+
+                    <form action="/hapus-tujuan/{{ $t->id }}" method="POST"
+                        enctype="multipart/form-data">
+                        @method('DELETE')
+                        <!-- Menggunakan DELETE method untuk menghapus data -->
+                        @csrf
+                        <button type="submit" class="btn btn-danger"
+                            id="konfirmasiHapusTujuan">Hapus</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
         </td>
     </tr>
     <tr>
         <td>
             <div class="panel-body table-responsive">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="thead-light">
                         <tr>
                             <th>
                                 No.
@@ -365,7 +367,7 @@
                                         <i class="fas fa-edit">
                                         </i>
                                     </a>
-                                    
+
                                     @include('modals.editindikator')
                                     <a href="/hapus/indikator/{{ $i->id }}" data-tip="delete"
                                         class="text-danger">
@@ -380,7 +382,7 @@
                 </table>
             </div>
             <div class="text-right">
-                <button class="btn btn-outline-primary" style="margin-top: 10px;" data-toggle="modal"
+                <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
                     data-target="#tambahIndikatorModal">
                     <i class="fas fa-plus">
                     </i>

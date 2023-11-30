@@ -37,20 +37,20 @@ class IndikatorController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('layouts.visimisi')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
         $item = Indikator::findOrFail($id);
 
         $item->update($request->all());
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['success' => 'Indikator Berhasil Dirubah!']);
     }
 
     public function destroy($id)
     {
         $indikator = Indikator::findorfail($id);
         $indikator->delete();
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['info' => 'Indikator Berhasil Dihapus!']);
     }
 }

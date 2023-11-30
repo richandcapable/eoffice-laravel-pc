@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <!-- Isi pesan konfirmasi penghapusan -->
-                <p>Anda yakin ingin menghapus tujuan ini?</p>
+                <p>Anda yakin ingin menghapus Sasaran ini?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

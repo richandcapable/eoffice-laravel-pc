@@ -19,7 +19,7 @@
                                                                             <div class="form-group">
                                                                                 <label for="newVisi">Visi Baru</label>
                                                                                 <input type="text" class="form-control"
-                                                                                    name="visi" placeholder="Masukkan visi baru">
+                                                                                    name="visi" placeholder="Masukkan visi baru" value="{{ $v->visi  }}">
                                                                             </div>
                                                                     </div>
                                                                     <div class="modal-footer">

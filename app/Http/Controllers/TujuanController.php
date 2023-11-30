@@ -21,20 +21,20 @@ class TujuanController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('layouts.visimisi')->with(['success' => 'Tujuan Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
         $data = Tujuan::findOrFail($id);
 
         $data->update($request->all());
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['success' => 'Tujuan Berhasil Diubah!']);
     }
 
     public function destroy($id){
         $tujuan = Tujuan::findorfail($id);
         $tujuan->delete();
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['success' => 'Tujuan Berhasil Dihapus!']);
     }
 
 }

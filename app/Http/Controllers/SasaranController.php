@@ -40,8 +40,7 @@ class SasaranController extends Controller
 
         //redirect to index
         return redirect()
-            ->route('layouts.sasaran')
-            ->with(['success' => 'Data Berhasil Disimpan!']);
+            ->route('layouts.sasaran')->with(['success' => 'Sasaran Berhasil Disimpan!']);
     }
 
     public function update(Request $request, $id)
@@ -56,7 +55,7 @@ class SasaranController extends Controller
     {
         $sasaran = Sasaran::findorfail($id);
         $sasaran->delete();
-        return redirect('/sasaran');
+        return redirect('/sasaran')->with(['success' => 'Sasaran Berhasil Dihapus!']);
     }
 
     public function search(Request $request)

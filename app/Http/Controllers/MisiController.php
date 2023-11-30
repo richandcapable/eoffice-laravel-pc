@@ -50,7 +50,7 @@ class MisiController extends Controller
         ]);
 
         //redirect to index
-        return redirect('visimisi')->withToastSuccess('Misi Disimpan!');;
+        return redirect('visimisi')->with(['success' => 'Misi Berhasil Disimpan!']);
             
     }
 
@@ -65,7 +65,7 @@ class MisiController extends Controller
         $misi->misi = $request->misi;
         
         $misi->save();
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['success' => 'Misi Berhasil Diubah!']);
     }
     
     
@@ -74,6 +74,6 @@ class MisiController extends Controller
     {
         $misi = Misi::findorfail($id);
         $misi->delete();
-        return redirect('/visimisi');
+        return redirect('/visimisi')->with(['info' => 'Misi Berhasil Dihapus!']);
     }
 }
