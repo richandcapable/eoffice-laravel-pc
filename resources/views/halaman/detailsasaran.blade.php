@@ -100,7 +100,9 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-cog fa-s"></i><!-- Ikon setelan (setting) -->
                                             </button>
-                                            <p class="ml-3 text-center"><b>Nama Sasaran :</b> Sasaran Misi</p>
+                                            @foreach ($sasaran as $s)
+                                            <p class="ml-3 text-center"><b>Nama Sasaran :</b> {{ $s->sasaran }}</p>
+                                            @endforeach
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" data-tip="editIndikator" data-toggle="modal"
                                                     data-target="#editIndikator">Edit</a>

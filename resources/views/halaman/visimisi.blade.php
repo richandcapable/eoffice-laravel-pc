@@ -105,7 +105,7 @@
                                                             <a data-tip="editMisi"
                                                                 href="{{ url('misi/edit') }}/{{ $m->id }}"
                                                                 class="text-warning" data-toggle="modal"
-                                                                data-target="#editMisi">
+                                                                data-target="#editMisi{{ $m->id }}">
                                                                 <i class="fas fa-edit">
                                                                 </i>
                                                             </a>
@@ -158,19 +158,20 @@
                                         </p>
                                 </td>
                             </tr>
-                                    @foreach ($tujuan as $t)
-                            <tr>
-                                <td>
-                                    <div class="text-left">
-                                        <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
-                                            data-target="#tambahTujuanModal">
-                                            <i class="fas fa-plus">
-                                            </i>
-                                            Tambah Tujuan Misi {{ $loop->iteration }}
-                                        </button>
-                                    </div>
-                                    <!-- Modal -->
-                                    @include('modals.tambahtujuan')
+                            @foreach ($tujuan as $t)
+                                <tr>
+                                    <td>
+                                        <div class="text-left">
+                                            <button class="btn btn-outline-success" style="margin-top: 10px;"
+                                                data-toggle="modal"
+                                                data-target="#tambahTujuanModal{{ $m->id }}">
+                                                <i class="fas fa-plus">
+                                                </i>
+                                                Tambah Tujuan Misi {{ $loop->iteration }}
+                                            </button>
+                                        </div>
+                                        <!-- Modal -->
+                                        @include('modals.tambahtujuan')
 
                     </div>
                 </div>
@@ -181,14 +182,14 @@
     </div>
     </div>
     </div>
-    
+
     </td>
     </tr>
     <tr>
         <td>
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-cog">
                     </i>
                     <!-- Ikon setelan (setting) -->
@@ -202,11 +203,11 @@
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" data-tip="editTujuan" data-toggle="modal"
-                        data-target="#editTujuan">
+                        data-target="#editTujuan{{ $t->id }}">
                         Edit
                     </a>
                     <a class="dropdown-item" data-tip="hapusTujuan" data-toggle="modal"
-                        data-target="#hapusTujuan">
+                        data-target="#hapusTujuan{{ $t->id }}">
                         Hapus
                     </a>
                 </div>
@@ -215,7 +216,7 @@
     </tr>
 
     <!-- Modal Edit Tujuan -->
-    <div class="modal fade" id="editTujuan" tabindex="-1" role="dialog"
+    <div class="modal fade" id="editTujuan{{ $t->id }}" tabindex="-1" role="dialog"
         aria-labelledby="editTujuanModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -223,8 +224,7 @@
                     <h5 class="modal-title" id="editTujuanModalLabel">
                         Edit Tujuan
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">
                             &times;
                         </span>
@@ -232,15 +232,14 @@
                 </div>
                 <div class="modal-body">
                     <!-- Isi form untuk mengubah tujuan -->
-                    <form action="/tujuan-update/{{ $t->id }}'" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="/tujuan-update/{{ $t->id }}'" method="POST" enctype="multipart/form-data">
                         @method('PUT') @csrf
                         <div class="form-group">
                             <label for="newTujuan">
                                 Tujuan Baru
                             </label>
                             <input type="text" class="form-control" name="tujuan"
-                                placeholder="Masukkan tujuan baru" value="w{{ $t->tujuan  }}">
+                                placeholder="Masukkan tujuan baru" value="{{ $t->tujuan }}">
                         </div>
                         <button type="submit" class="btn btn-success">
                             Simpan Perubahan
@@ -252,14 +251,13 @@
         </div>
     </div>
     <!-- Modal Hapus Tujuan -->
-    <div class="modal fade" id="hapusTujuan" tabindex="-1" role="dialog"
+    <div class="modal fade" id="hapusTujuan{{ $t->id }}" tabindex="-1" role="dialog"
         aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="hapusTujuanModalLabel">Hapus Tujuan</h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -268,24 +266,21 @@
                     <p>Anda yakin ingin menghapus tujuan ini?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <!-- Tombol konfirmasi penghapusan -->
 
-                    <form action="/hapus-tujuan/{{ $t->id }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="/hapus-tujuan/{{ $t->id }}" method="POST" enctype="multipart/form-data">
                         @method('DELETE')
                         <!-- Menggunakan DELETE method untuk menghapus data -->
                         @csrf
-                        <button type="submit" class="btn btn-danger"
-                            id="konfirmasiHapusTujuan">Hapus</button>
+                        <button type="submit" class="btn btn-danger" id="konfirmasiHapusTujuan">Hapus</button>
                     </form>
 
                 </div>
             </div>
         </div>
     </div>
-        </td>
+    </td>
     </tr>
     <tr>
         <td>
@@ -383,15 +378,16 @@
             </div>
             <div class="text-right">
                 <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
-                    data-target="#tambahIndikatorModal">
+                    data-target="#tambahIndikatorModal{{ $t->id }}">
                     <i class="fas fa-plus">
                     </i>
                     Tambah Indikator
                 </button>
             </div>
+            @include('modals.tambahindikator')
             @endforeach
             <!-- Modal -->
-            @include('modals.tambahindikator')
+           
             </form>
             @endforeach
         </td>

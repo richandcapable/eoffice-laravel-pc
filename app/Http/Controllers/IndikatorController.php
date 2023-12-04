@@ -21,7 +21,7 @@ class IndikatorController extends Controller
         //     'target_kondisi_akhir' => 'required|min:1'
         // ]);
 
-        //create indikator
+       
 
         Indikator::create([
             'indikator'            => $request->indikator,
@@ -34,10 +34,13 @@ class IndikatorController extends Controller
             'target_tahun_2025'    => $request->target_tahun_2025,
             'target_kondisi_akhir' => $request->target_kondisi_akhir,
             'tujuan_id'            => $id
+            
+            
         ]);
+         
 
         //redirect to index
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Indikator Berhasil Disimpan!']);
+        return redirect()->route('halaman.visimisi')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){

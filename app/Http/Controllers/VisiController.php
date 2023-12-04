@@ -22,7 +22,7 @@ class VisiController extends Controller
         $misi = Misi::all();
         $indikator = Indikator::all();
         $tujuan = Tujuan::all();
-        return view('layouts/visimisi',compact('visis','misi','indikator','tujuan'));
+        return view('halaman/visimisi',compact('visis','misi','indikator','tujuan'));
        
     }
 
@@ -61,13 +61,13 @@ class VisiController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('halaman.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     public function update(Request $request){
         $data = Visi::findOrFail('1');
 
         $data->update($request->all());
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('halaman.visimisi')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 }

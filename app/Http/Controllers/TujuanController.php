@@ -21,7 +21,7 @@ class TujuanController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.visimisi')->with(['success' => 'Tujuan Berhasil Disimpan!']);
+        return redirect()->route('halaman.visimisi')->with(['success' => 'Tujuan Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){

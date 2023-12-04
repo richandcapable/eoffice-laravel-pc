@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,9 @@
 
     <!-- Custom fonts for this template -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -41,12 +44,13 @@
                                     <tr>
                                         <td>
                                             <div class="text-center">
-                                                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tambahSasaran">
+                                                <button class="btn btn-primary btn-block" data-toggle="modal"
+                                                    data-target="#tambahSasaran">
                                                     <i class="fa fa-plus"></i>Tambah Sasaran
                                                 </button>
                                             </div>
-                                            
-                                           @include('modals.tambahsasaran')                                                                                    
+
+                                            @include('modals.tambahsasaran')
                                         </td>
                                         <td>
                                             <div id="visiContent">
@@ -56,14 +60,20 @@
                                                 <div class="row">
                                                     <div class="col-md-8">
                                                         <div class="input-group mb-3">
-                                                        <form action="/sasaran/search" class="input-group" method="GET">
-                                                            <input type="search" name="search" class="form-control" placeholder="Cari berdasarkan Nama Sasaran" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-outline-primary" type="submit">
-                                                                    <i class="fas fa-search"></i>
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                            <form action="/sasaran/search" class="input-group"
+                                                                method="GET">
+                                                                <input type="search" name="search"
+                                                                    class="form-control"
+                                                                    placeholder="Cari berdasarkan Nama Sasaran"
+                                                                    aria-label="Recipient's username"
+                                                                    aria-describedby="basic-addon2">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-outline-primary"
+                                                                        type="submit">
+                                                                        <i class="fas fa-search"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -81,30 +91,30 @@
                                     <div class="card-body p-5">
                                         <!-- Bootstrap table -->
                                         <div class="table-responsive">
-                                            @if(isset($sasaran) && count($sasaran) > 0)
+                                            @if ($sasaran->count() > 0)
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>No.</th>
                                                             <th>Kode</th>
-                                                            <th>Nama Sasaran</th>                                                  
+                                                            <th>Nama Sasaran</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($sasaran as $s)
-                                                        <tr>
-                                                            <td>{{$loop->iteration}}</td>
-                                                            <td>{{ $s->kode }}</td>
-                                                            <td>{{ $s->nama_sasaran }}</td>                                                  
-                                                            <td>
-                                                                <a href="detailsasaran">
-                                                                    <button class="btn btn-primary btn-sm">
-                                                                        <i class="far fa-eye"></i> Detail   
-                                                                    </button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($sasaran as $s)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $s->kode }}</td>
+                                                                <td>{{ $s->nama_sasaran }}</td>
+                                                                <td>
+                                                                    <a href="/detailsasaran/{{ $s->id }}">
+                                                                        <button class="btn btn-primary btn-sm">
+                                                                            <i class="far fa-eye"></i> Detail
+                                                                        </button>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -128,6 +138,7 @@
         </div>
         <!-- End of Content Wrapper -->
     </div>
-    
+
 </body>
+
 </html>

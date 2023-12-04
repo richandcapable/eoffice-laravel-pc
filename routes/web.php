@@ -27,18 +27,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('layouts/sasaran', function () {
-    return view('layouts.sasaran');
+Route::get('halaman/sasaran', function () {
+    return view('halaman.sasaran');
 });
 
-Route::get('layouts/detailsasaran', function () {
-    return view('layouts.detailsasaran');
+Route::get('halaman/detailsasaran', function () {
+    return view('halaman.detailsasaran');
 });
 
-Route::get('detailsasaran', [DetailSasaranController::class, 'show'])->name('layouts.detailsasaran');
+
 
 //VISI
-Route::get('/visimisi', [VisiController::class, 'index'])->name('layouts.visimisi');
+Route::get('/visimisi', [VisiController::class, 'index'])->name('halaman.visimisi');
 Route::put('/visimisi-update/{id}', [VisiController::class, 'update']);
 Route::put('/visis', [VisiController::class, 'store'])->name('visi.store');
 Route::get('/visi/{id}', [VisiController::class, 'show']);
@@ -61,8 +61,10 @@ Route::post('/tujuan-store/{id}', [TujuanController::class, 'store']);
 Route::put('/tujuan-update/{id}', [TujuanController::class, 'update']);
 Route::delete('/hapus-tujuan/{id}', [TujuanController::class, 'destroy'])->name('hapus');
 //SASARAN
-Route::get('/sasaran', [SasaranController::class, 'index'])->name('layouts.sasaran');
+Route::get('/sasaran', [SasaranController::class, 'index'])->name('halaman.sasaran');
 Route::post('/sasaran-store', [SasaranController::class, 'store']);
 Route::put('/sasaran-update/{id}', [SasaranController::class, 'update']);
 Route::delete('/hapus-sasaran/{id}', [SasaranController::class, 'destroy'])->name('hapus');
 Route::get('/sasaran/search', [SasaranController::class, 'search']);
+//DETAIL SASARAN
+Route::get('/detailsasaran/{id}', [DetailSasaranController::class, 'detail'])->name('halaman.detailsasaran');

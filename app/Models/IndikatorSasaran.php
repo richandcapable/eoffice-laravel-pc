@@ -21,6 +21,18 @@ class IndikatorSasaran extends Model
         'target_tahun_2024',
         'target_tahun_2025',
         'target_kondisi_akhir',
-        'satuan_pengukuran'
+        'satuan_pengukuran',
+        'sasaran_id'
     ];
+
+    public function indikator()
+    {
+        return $this->belongsTo(Indikator::class);
+    }
+
+    // IndikatorSasaran dapat memiliki banyak Tujuan
+    public function tujuans()
+    {
+        return $this->hasMany(Tujuan::class);
+    }
 }

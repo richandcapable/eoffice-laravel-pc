@@ -28,7 +28,7 @@ class MisiController extends Controller
      */
     public function create()
     {
-        return view('layouts.visimisi');
+        return view('halaman.visimisi');
     }
 
     /**

@@ -13,5 +13,11 @@ class Visi extends Model
     protected $primarykey = "id";
     protected $fillable = [
         'visi',
+        'sasaran_id',
     ];
+
+    public function sasaran()
+    {
+        return $this->belongsTo(Sasaran::class);
+    }
 }

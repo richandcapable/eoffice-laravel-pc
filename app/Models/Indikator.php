@@ -22,9 +22,21 @@ class Indikator extends Model
         'target_tahun_2025',
         'target_kondisi_akhir',
         'satuan_pengukuran',
+        'sasaran_id',
     ];
 
     public function Tujuan(){
         return $this->belongsTo(Tujuan::class);
+    }
+    // Indikator milik satu Misi
+    public function misi()
+    {
+        return $this->belongsTo(Misi::class);
+    }
+
+    // Indikator dapat dimiliki oleh banyak IndikatorSasaran
+    public function indikatorSasarans()
+    {
+        return $this->hasMany(IndikatorSasaran::class);
     }
 }

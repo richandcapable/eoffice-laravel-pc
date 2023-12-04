@@ -37,7 +37,7 @@ class IndikatorSasaranController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('layouts.detailsasaran')->with(['success' => 'Indikator Berhasil Disimpan!']);
+        return redirect()->route('halaman.detailsasaran')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){

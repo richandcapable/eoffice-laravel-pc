@@ -18,7 +18,11 @@ class SasaranController extends Controller
         $misi = Misi::all();
         $indikator = Indikator::all();
         $tujuan = Tujuan::all();
-        return view('layouts/sasaran', compact('sasaran', 'misi', 'indikator', 'tujuan'));
+        return view('halaman/sasaran', compact('sasaran', 'misi', 'indikator', 'tujuan'));
+    }
+
+    function detail($id){
+        return "<h1>Saya Pegawai Di dinas Komunikasi dan Informatika ";
     }
 
     public function store(Request $request)
@@ -39,8 +43,7 @@ class SasaranController extends Controller
         ]);
 
         //redirect to index
-        return redirect()
-            ->route('layouts.sasaran')->with(['success' => 'Sasaran Berhasil Disimpan!']);
+        return redirect()->route('halaman.sasaran')->with(['success' => 'Sasaran Berhasil Disimpan!']);
     }
 
     public function update(Request $request, $id)
@@ -62,10 +65,16 @@ class SasaranController extends Controller
     {
         if ($request->has('search')) {
             $sasaran = Sasaran::where('nama_sasaran', 'LIKE', '%' . $request->search . '%')->get();
+            $misi = Misi::all();
+            $indikator = Indikator::all();
+            $tujuan = Tujuan::all();
         } else {
             $sasaran = Sasaran::all();
+            $misi = Misi::all();
+            $indikator = Indikator::all();
+            $tujuan = Tujuan::all();
         }
 
-        return view('layouts.sasaran', ['sasaran' => $sasaran]);
+        return view('halaman/sasaran', compact('sasaran', 'misi', 'indikator', 'tujuan'));
     }
 }

@@ -11,7 +11,7 @@ class Tujuan extends Model
 
     protected $table = 'tujuans';
     protected $primarykey = 'id';
-    protected $fillable = ['tujuan', 'misi_id', 'indikator_id'];
+    protected $fillable = ['tujuan', 'misi_id', 'indikator_id','sasaran_id'];
 
     public function misi()
     {
@@ -19,6 +19,12 @@ class Tujuan extends Model
     }
 
     public function indikator(){
-        return $this->hasMany(Indikator::class);
+        return $this->hasMany(Indikator::class);  
+    }
+
+    // Tujuan milik satu IndikatorSasaran
+    public function indikatorSasaran()
+    {
+        return $this->belongsTo(IndikatorSasaran::class);
     }
 }

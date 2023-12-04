@@ -14,10 +14,22 @@ class Misi extends Model
     protected $fillable = [
         'misi',
         'tujuan_id',
+        'sasaran_id',
     ];
 
     public function tujuan()
     {
         return $this->hasMany(Tujuan::class);
+    }
+    // Misi milik satu Visi
+    public function visi()
+    {
+        return $this->belongsTo(Visi::class);
+    }
+
+    // Misi dapat memiliki banyak Indikator
+    public function indikators()
+    {
+        return $this->hasMany(Indikator::class);
     }
 }

@@ -1,4 +1,4 @@
-<div class="modal fade" id="editMisi" tabindex="-1" role="dialog" aria-labelledby="editMisiModalLabel" aria-hidden="true">
+<div class="modal fade" id="editMisi{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="editMisiModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

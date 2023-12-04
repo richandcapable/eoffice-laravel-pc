@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Visi;
 use App\Models\Misi;
+use App\Models\Sasaran;
 use App\Models\Indikator;
 use App\Models\IndikatorSasaran;
 use App\Models\Tujuan;
@@ -12,15 +13,17 @@ use Illuminate\Http\Request;
 
 class DetailSasaranController extends Controller
 {
-    public function show(){
+    public function detail($id){
         //get visis
-        $visis = Visi::all()->where('id','1');
-        $misi = Misi::all();
-        $indikator = Indikator::all();
-        $indikator_sasarans = IndikatorSasaran::all();
-        $tujuan = Tujuan::all();
-        return view('layouts/detailsasaran',compact('visis','misi','indikator','tujuan','indikator_sasarans'));
+        $sasaran = Sasaran::find($id);
+        $misi = Misi::where('sasaran_id', $id)->get();
+        $visi = Visi::where('sasaran_id', $id)->get();
+        $indikator = Indikator::where('sasaran_id', $id)->get(); 
+        $indikator_sasaran = IndikatorSasaran::where('sasaran_id', $id)->get(); 
+        $tujuan = Tujuan::where('sasaran_id', $id)->get();
+        return view('halaman/sasaran', compact('sasaran', 'visi', 'misi', 'indikator', 'indikator_sasaran','tujuan'));
     }
+}
 
     
-}
+

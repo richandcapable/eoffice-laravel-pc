@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('indikators', function (Blueprint $table) {
             $table->id();
-            $table->string('indikator')->nullable();
+            $table->string('indikator');
             $table->string('satuan_pengukuran');
             $table->string('target_kondisi_awal');
             $table->string('target_tahun_2021');
