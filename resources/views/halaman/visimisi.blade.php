@@ -147,18 +147,17 @@
                                     </b>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    @foreach ($misi as $m)
+                            @foreach ($misi as $m)
+                                <tr>
+                                    <td>
                                         <p>
                                             <b>
                                                 Misi {{ $loop->iteration }}.
                                             </b>
                                             {{ $m->misi }}
                                         </p>
-                                </td>
-                            </tr>
-                            @foreach ($tujuan as $t)
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <div class="text-left">
@@ -167,233 +166,228 @@
                                                 data-target="#tambahTujuanModal{{ $m->id }}">
                                                 <i class="fas fa-plus">
                                                 </i>
-                                                Tambah Tujuan Misi {{ $loop->iteration }}
+                                                Tambah Tujuan Misi {{ $m->id }}
                                             </button>
+                                            @include('modals.tambahtujuan')
                                         </div>
-                                        <!-- Modal -->
-                                        @include('modals.tambahtujuan')
-
+                                    </td>
+                                </tr>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-cog">
-                    </i>
-                    <!-- Ikon setelan (setting) -->
-                </button>
-                <p class="ml-2">
-                    <b>
-                        Tujuan {{ $loop->iteration }}.
-                    </b>
-                    {{ $t->tujuan }}
-                </p>
 
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" data-tip="editTujuan" data-toggle="modal"
-                        data-target="#editTujuan{{ $t->id }}">
-                        Edit
-                    </a>
-                    <a class="dropdown-item" data-tip="hapusTujuan" data-toggle="modal"
-                        data-target="#hapusTujuan{{ $t->id }}">
-                        Hapus
-                    </a>
-                </div>
-            </div>
-        </td>
-    </tr>
+            @foreach ($m->tujuan as $t)
+                <tr>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cog">
+                                </i>
+                                <!-- Ikon setelan (setting) -->
+                            </button>
+                            <p class="ml-2">
+                                <b>
+                                    Tujuan {{ $loop->iteration }}.
+                                </b>
+                                {{ $t->tujuan }}
+                            </p>
 
-    <!-- Modal Edit Tujuan -->
-    <div class="modal fade" id="editTujuan{{ $t->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="editTujuanModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editTujuanModalLabel">
-                        Edit Tujuan
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            &times;
-                        </span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Isi form untuk mengubah tujuan -->
-                    <form action="/tujuan-update/{{ $t->id }}'" method="POST" enctype="multipart/form-data">
-                        @method('PUT') @csrf
-                        <div class="form-group">
-                            <label for="newTujuan">
-                                Tujuan Baru
-                            </label>
-                            <input type="text" class="form-control" name="tujuan"
-                                placeholder="Masukkan tujuan baru" value="{{ $t->tujuan }}">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" data-tip="editTujuan" data-toggle="modal"
+                                    data-target="#editTujuan{{ $t->id }}">
+                                    Edit
+                                </a>
+                                <a class="dropdown-item" data-tip="hapusTujuan" data-toggle="modal"
+                                    data-target="#hapusTujuan{{ $t->id }}">
+                                    Hapus
+                                </a>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-success">
-                            Simpan Perubahan
-                        </button>
-                    </form>
+                    </td>
+                </tr>
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Hapus Tujuan -->
-    <div class="modal fade" id="hapusTujuan{{ $t->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="hapusTujuanModalLabel">Hapus Tujuan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Isi pesan konfirmasi penghapusan -->
-                    <p>Anda yakin ingin menghapus tujuan ini?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <!-- Tombol konfirmasi penghapusan -->
+                <!-- Modal Edit Tujuan -->
+                <div class="modal fade" id="editTujuan{{ $t->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editTujuanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editTujuanModalLabel">
+                                    Edit Tujuan
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">
+                                        &times;
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Isi form untuk mengubah tujuan -->
+                                <form action="/tujuan-update/{{ $t->id }}'" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('PUT') @csrf
+                                    <div class="form-group">
+                                        <label for="newTujuan">
+                                            Tujuan Baru
+                                        </label>
+                                        <input type="text" class="form-control" name="tujuan"
+                                            placeholder="Masukkan tujuan baru" value="{{ $t->tujuan }}">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">
+                                        Simpan Perubahan
+                                    </button>
+                                </form>
 
-                    <form action="/hapus-tujuan/{{ $t->id }}" method="POST" enctype="multipart/form-data">
-                        @method('DELETE')
-                        <!-- Menggunakan DELETE method untuk menghapus data -->
-                        @csrf
-                        <button type="submit" class="btn btn-danger" id="konfirmasiHapusTujuan">Hapus</button>
-                    </form>
-
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="panel-body table-responsive">
-                <table class="table table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>
-                                No.
-                            </th>
-                            <th>
-                                Indikator
-                            </th>
-                            <th class="col-1">
-                                Kondisi Awal
-                            </th>
-                            <th class="col-1">
-                                Target 2021
-                            </th>
-                            <th class="col-1">
-                                Target 2022
-                            </th>
-                            <th class="col-1">
-                                Target 2023
-                            </th>
-                            <th class="col-1">
-                                Target 2024
-                            </th>
-                            <th class="col-1">
-                                Target 2025
-                            </th>
-                            <th class="col-1">
-                                Kondisi Akhir
-                            </th>
-                            <th class="col-1">
-                                Satuan
-                            </th>
-                            <th class="col-1">
-                                Opsi
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($indikator as $i)
-                            <tr>
-                                <td>
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td>
-                                    {{ $i->indikator }}
-                                </td>
-                                <td>
-                                    {{ $i->target_kondisi_awal }}
-                                </td>
-                                <td>
-                                    {{ $i->target_tahun_2021 }}
-                                </td>
-                                <td>
-                                    {{ $i->target_tahun_2023 }}
-                                </td>
-                                <td>
-                                    {{ $i->target_tahun_2023 }}
-                                </td>
-                                <td>
-                                    {{ $i->target_tahun_2024 }}
-                                </td>
-                                <td>
-                                    {{ $i->target_tahun_2025 }}
-                                </td>
-                                <td>
-                                    {{ $i->target_kondisi_akhir }}
-                                </td>
-                                <td>
-                                    {{ $i->satuan_pengukuran }}
-                                </td>
-                                <td>
-                                    <a data-tip="editIndikator" href="/indikator-update/{{ $i->id }}"
-                                        class="text-warning" data-toggle="modal" data-target="#editIndikatorModal">
-                                        <i class="fas fa-edit">
-                                        </i>
-                                    </a>
+                <!-- Modal Hapus Tujuan -->
+                <div class="modal fade" id="hapusTujuan{{ $t->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="hapusTujuanModalLabel">Hapus Tujuan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Isi pesan konfirmasi penghapusan -->
+                                <p>Anda yakin ingin menghapus tujuan ini?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <!-- Tombol konfirmasi penghapusan -->
 
-                                    @include('modals.editindikator')
-                                    <a href="/hapus/indikator/{{ $i->id }}" data-tip="delete"
-                                        class="text-danger">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        <!-- Tambahkan baris Indikator lainnya sesuai kebutuhan -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="text-right">
-                <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
-                    data-target="#tambahIndikatorModal{{ $t->id }}">
-                    <i class="fas fa-plus">
-                    </i>
-                    Tambah Indikator
-                </button>
-            </div>
-            @include('modals.tambahindikator')
+                                <form action="/hapus-tujuan/{{ $t->id }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('DELETE')
+                                    <!-- Menggunakan DELETE method untuk menghapus data -->
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger"
+                                        id="konfirmasiHapusTujuan">Hapus</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>
+                                            No.
+                                        </th>
+                                        <th>
+                                            Indikator
+                                        </th>
+                                        <th class="col-1">
+                                            Kondisi Awal
+                                        </th>
+                                        <th class="col-1">
+                                            Target 2021
+                                        </th>
+                                        <th class="col-1">
+                                            Target 2022
+                                        </th>
+                                        <th class="col-1">
+                                            Target 2023
+                                        </th>
+                                        <th class="col-1">
+                                            Target 2024
+                                        </th>
+                                        <th class="col-1">
+                                            Target 2025
+                                        </th>
+                                        <th class="col-1">
+                                            Kondisi Akhir
+                                        </th>
+                                        <th class="col-1">
+                                            Satuan
+                                        </th>
+                                        <th class="col-1">
+                                            Opsi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($t->indikator as $i)
+                                        <tr>
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $i->indikator }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_kondisi_awal }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_tahun_2021 }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_tahun_2023 }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_tahun_2023 }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_tahun_2024 }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_tahun_2025 }}
+                                            </td>
+                                            <td>
+                                                {{ $i->target_kondisi_akhir }}
+                                            </td>
+                                            <td>
+                                                {{ $i->satuan_pengukuran }}
+                                            </td>
+                                            <td>
+                                                <a data-tip="editIndikator"
+                                                    href="/indikator-update/{{ $i->id }}" class="text-warning"
+                                                    data-toggle="modal" data-target="#editIndikatorModal">
+                                                    <i class="fas fa-edit">
+                                                    </i>
+                                                </a>
+
+                                                @include('modals.editindikator')
+                                                <a href="/hapus/indikator/{{ $i->id }}" data-tip="delete"
+                                                    class="text-danger">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                </tbody>
             @endforeach
-            <!-- Modal -->
-           
-            </form>
-            @endforeach
+            </table>
+        </div>
+        <div class="text-right">
+            <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
+                data-target="#tambahIndikatorModal{{ $t->id }}">
+                <i class="fas fa-plus">
+                </i>
+                Tambah Indikator
+            </button>
+        </div>
+        @include('modals.tambahindikator')
+        @endforeach
+        </form>
+        @endforeach
         </td>
-    </tr>
-    <!-- Tambahkan Misi dan Tujuan lainnya sesuai kebutuhan -->
-    </table>
+        </tr>
+
+        </table>
     </div>
     </div>
     </div>
@@ -405,7 +399,9 @@
     @include('layouts.footer')
     <!-- End of Footer -->
     </div>
-    <!-- End of Content Wrapper -->
+
+    </div>
+    </div>
     </div>
 </body>
 

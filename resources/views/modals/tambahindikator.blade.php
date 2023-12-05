@@ -1,5 +1,5 @@
-<div class="modal fade" id="tambahIndikatorModal{{ $t->id }}" tabindex="-1" role="dialog" aria-labelledby="tambahIndikatorModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="tambahIndikatorModal{{ $t->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="tambahIndikatorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form action="/indikator-store/{{ $t->id }}" method="POST">
                     @csrf
-                   
+
                     <div class="form-group">
                         <label for="misiTujuan"><b>Misi</b></label>
                         <p> {{ $m->misi }}
@@ -37,8 +37,7 @@
                             <option value="Sasaran">Sasaran</option>
                             <option value="SR">SR</option>
                             <option value="Kali">Kali</option>
-                            <option value="minggu sekali dalam setahun">minggu sekali dalam setahun
-                            </option>
+                            <option value="minggu sekali dalam setahun">minggu sekali dalam setahun</option>
                             <option value="Forum/Kampung">Forum/Kampung</option>
                             <option value="Kelompok">Kelompok</option>
                             <option value="Orang">Orang</option>
@@ -172,7 +171,7 @@
                                             <td><input type="text" class="form-control"
                                                     placeholder="Masukkan Target Akhir" name="target_kondisi_akhir">
                                             </td>
-                                            
+
 
                                         </tr>
                                     </tbody>
