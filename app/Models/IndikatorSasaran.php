@@ -35,4 +35,9 @@ class IndikatorSasaran extends Model
     {
         return $this->hasMany(Tujuan::class);
     }
+
+    public function sasaran()
+    {
+        return $this->belongsTo(Sasaran::class);
+    }
 }

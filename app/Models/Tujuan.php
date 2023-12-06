@@ -27,4 +27,8 @@ class Tujuan extends Model
     {
         return $this->belongsTo(IndikatorSasaran::class);
     }
+    public function sasaran()
+    {
+        return $this->belongsTo(Sasaran::class);
+    }
 }

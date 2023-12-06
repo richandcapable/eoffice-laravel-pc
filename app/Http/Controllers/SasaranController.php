@@ -7,6 +7,7 @@ use App\Models\Visi;
 use App\Models\Misi;
 use App\Models\Indikator;
 use App\Models\Tujuan;
+use App\Models\IndikatorSasaran;
 use Illuminate\Http\Request;
 
 class SasaranController extends Controller
@@ -15,17 +16,14 @@ class SasaranController extends Controller
     {
         //get visis
         $sasaran = Sasaran::all();
+       
         $misi = Misi::all();
         $indikator = Indikator::all();
         $tujuan = Tujuan::all();
         return view('halaman/sasaran', compact('sasaran', 'misi', 'indikator', 'tujuan'));
     }
 
-    function detail($id){
-        return "<h1>Saya Pegawai Di dinas Komunikasi dan Informatika ";
-    }
-
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         // validate form
         $this->validate($request, [
@@ -35,11 +33,13 @@ class SasaranController extends Controller
 
         //create post
         Sasaran::create([
+            'sasaran_id' => $id,
             'kode' => $request->kode,
             'nama_sasaran' => $request->nama_sasaran,
             'misi' => $request->misi,
             'tujuan' => $request->tujuan,
             'indikator_tujuan' => $request->indikator_tujuan,
+
         ]);
 
         //redirect to index
@@ -48,9 +48,9 @@ class SasaranController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = Sasaran::findOrFail($id);
+        $sasaran = Sasaran::findOrFail($id);
 
-        $data->update($request->all());
+        $sasaran->update($request->all());
         return redirect('/sasaran');
     }
 
@@ -76,5 +76,16 @@ class SasaranController extends Controller
         }
 
         return view('halaman/sasaran', compact('sasaran', 'misi', 'indikator', 'tujuan'));
+    }
+
+    public function detail($id)
+    {
+        $sasaran = Sasaran::all();
+        $visi = Visi::all();
+        $misi = Misi::all();
+        $tujuan = Tujuan::all();
+        $indikator = Indikator::all();
+        $indikator_sasaran = IndikatorSasaran::all();
+        return view('halaman.detailsasaran', compact('sasaran', 'visi', 'misi', 'indikator', 'indikator_sasaran', 'tujuan'));
     }
 }

@@ -32,4 +32,8 @@ class Misi extends Model
     {
         return $this->hasMany(Indikator::class);
     }
+    public function sasaran()
+    {
+        return $this->belongsTo(Sasaran::class);
+    }
 }

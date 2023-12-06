@@ -32,7 +32,7 @@
                         <select class="form-control" name="satuan_pengukuran">
                             <option selected="selected" disabled="true">Pilih Satuan Pengukuran</option>
                             <option value="Lokasi">Lokasi</option>
-                            <option value="kegiatan">Kegiatan</option>
+                            <option value="Kegiatan">Kegiatan</option>
                             <option value="Titik">Titik</option>
                             <option value="Sasaran">Sasaran</option>
                             <option value="SR">SR</option>

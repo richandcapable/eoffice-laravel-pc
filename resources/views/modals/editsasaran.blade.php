@@ -1,27 +1,29 @@
-<div class="modal fade" id="editMisi{{ $m->id }}" tabindex="-1" role="dialog" aria-labelledby="editMisiModalLabel" aria-hidden="true">
+<div class="modal fade" id="editSasaran" tabindex="-1" role="dialog" aria-labelledby="editMisiModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editMisiModalLabel">Edit Misi</h5>
+                <h5 class="modal-title" id="editMisiModalLabel">Edit Sasaran</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <!-- Isi form untuk mengubah misi -->
-                <form action="{{url('misi/update')}}/{{ $m->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/sasaran-update/{id}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
-                        <label for="newMisi">Misi Baru</label>
-                        <input type="text" class="form-control" name="misi" placeholder="Masukkan misi baru" value="{{ $m->misi }}">
+                        <label for="newMisi">Sasaran Baru</label>
+                        <input type="text" class="form-control" name="nama_sasaran" placeholder="Masukkan Sasaran baru"
+                            value="">
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
-            </form>
         </div>
     </div>
 </div>
+</form>

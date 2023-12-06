@@ -62,9 +62,9 @@ Route::put('/tujuan-update/{id}', [TujuanController::class, 'update']);
 Route::delete('/hapus-tujuan/{id}', [TujuanController::class, 'destroy'])->name('hapus');
 //SASARAN
 Route::get('/sasaran', [SasaranController::class, 'index'])->name('halaman.sasaran');
-Route::post('/sasaran-store', [SasaranController::class, 'store']);
+Route::post('/sasaran-store/{id}', [SasaranController::class, 'store']);
 Route::put('/sasaran-update/{id}', [SasaranController::class, 'update']);
 Route::delete('/hapus-sasaran/{id}', [SasaranController::class, 'destroy'])->name('hapus');
 Route::get('/sasaran/search', [SasaranController::class, 'search']);
 //DETAIL SASARAN
-Route::get('/detailsasaran/{id}', [DetailSasaranController::class, 'detail'])->name('halaman.detailsasaran');
+Route::get('/detail-sasaran/{id}', [SasaranController::class, 'detail'])->name('halaman.detailsasaran');

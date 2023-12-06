@@ -9,12 +9,13 @@ class Sasaran extends Model
 {
     use HasFactory;
     protected $table = 'sasarans';
+    protected $primarykey = 'id';
     protected $fillable = [
         'kode',
         'nama_sasaran',
         'misi',
         'tujuan',
-        'indikator_tujuan'
+        'indikator_tujuan',
     ];
 
     // Sasaran memiliki banyak Visi
@@ -26,24 +27,24 @@ class Sasaran extends Model
     // Sasaran memiliki banyak Misi melalui Visi
     public function misis()
     {
-        return $this->hasManyThrough(Misi::class, Visi::class);
+        return $this->hasOne(Misi::class);
     }
 
     // Sasaran memiliki banyak Indikator melalui Misi
     public function indikators()
     {
-        return $this->hasManyThrough(Indikator::class, Misi::class);
+        return $this->hasOne(Indikator::class);
     }
 
     // Sasaran memiliki banyak Tujuan melalui Indikator
     public function tujuans()
     {
-        return $this->hasManyThrough(Tujuan::class, Indikator::class);
+        return $this->hasOne(Tujuan::class);
     }
 
     // Sasaran memiliki banyak IndikatorSasaran melalui Tujuan
     public function indikatorSasarans()
     {
-        return $this->hasManyThrough(IndikatorSasaran::class, Tujuan::class);
+        return $this->hasMany(IndikatorSasaran::class);
     }
 }

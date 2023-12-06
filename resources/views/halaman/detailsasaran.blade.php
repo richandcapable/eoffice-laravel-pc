@@ -47,15 +47,11 @@
                                     <tr>
                                         <td>
                                             <b>Visi</b>
-                                            @foreach ($visis as $v)
-                                                {{ $v->visi }}
-                                            @endforeach
+                                            {{ $visi->first()->visi }}
                                         </td>
                                         <td>
                                             <b>Tujuan</b>
-                                            @foreach ($tujuan as $t)
-                                                <p>{{ $t->tujuan }}</p>
-                                            @endforeach
+                                            {{ $tujuan->first()->tujuan }}
                                         </td>
                                     </tr>
                             </div>
@@ -66,18 +62,14 @@
                                 </div>
                                 <div class="container justify-content-center">
                                     <div class="row">
-                                        @foreach ($misi as $m)
-                                            {{ $m->misi }}
-                                        @endforeach
+                                        {{ $misi->first()->misi }}
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <b>Indikator Tujuan</b>
                                 <p>
-                                    @foreach ($indikator as $i)
-                                        {{ $i->indikator }}
-                                    @endforeach
+                                    {{ $indikator->first()->indikator }}
                                 </p>
                                 </tr>
                                 </table>
@@ -100,17 +92,18 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-cog fa-s"></i><!-- Ikon setelan (setting) -->
                                             </button>
-                                            @foreach ($sasaran as $s)
-                                            <p class="ml-3 text-center"><b>Nama Sasaran :</b> {{ $s->sasaran }}</p>
-                                            @endforeach
+                                                    <p class="ml-3 text-center"><b>Nama Sasaran :</b>
+                                                        {{ $sasaran->first()->nama_sasaran }}
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" data-tip="editIndikator" data-toggle="modal"
-                                                    data-target="#editIndikator">Edit</a>
-                                                <a class="dropdown-item" data-tip="hapusIndikator" data-toggle="modal"
-                                                    data-target="#hapusIndikator">Hapus</a>
+                                                <a class="dropdown-item" data-tip="editsasaran" data-toggle="modal"
+                                                    data-target="#editSasaran">Edit</a>
+                                                <a class="dropdown-item" data-tip="hapusSasaran" data-toggle="modal"
+                                                    data-target="#hapusSasaran">Hapus</a>
                                             </div>
                                         </div>
                                     </td>
+                                    @include('modals.editsasaran')
+                                    @include('modals.hapussasaran')
                                 </tr>
                                 <tr>
                                     <th>#</th>
@@ -125,7 +118,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($indikator_sasarans as $i)
+                                @foreach ($indikator_sasaran as $i)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
@@ -154,8 +147,9 @@
                                             {{ $i->satuan_pengukuran }}
                                         </td>
                                         <td>
-                                            <a data-tip="editIndikator" href="/indikatorsasaran-update/{{ $i->id }}" class="text-warning"
-                                                data-toggle="modal" data-target="#editIndikator"><i
+                                            <a data-tip="editIndikator"
+                                                href="/indikatorsasaran-update/{{ $i->id }}"
+                                                class="text-warning" data-toggle="modal" data-target="#editIndikator"><i
                                                     class="fas fa-edit"></i></a>
                                             <a data-tip="hapusIndikator" href="/hapus-indikator" class="text-danger"
                                                 data-target="#hapusIndikator" data-toggle="modal"><i
