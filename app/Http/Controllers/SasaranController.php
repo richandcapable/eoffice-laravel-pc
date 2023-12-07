@@ -51,7 +51,7 @@ class SasaranController extends Controller
         $sasaran = Sasaran::findOrFail($id);
 
         $sasaran->update($request->all());
-        return redirect('/sasaran');
+        return redirect('/detailsasaran');
     }
 
     public function destroy($id)
@@ -80,12 +80,12 @@ class SasaranController extends Controller
 
     public function detail($id)
     {
-        $sasaran = Sasaran::all();
+        $sasaran = Sasaran::find($id);
         $visi = Visi::all();
-        $misi = Misi::all();
-        $tujuan = Tujuan::all();
-        $indikator = Indikator::all();
+        // $misi = Misi::all();
+        // $tujuan = Tujuan::all();
+        // $indikator = Indikator::all();
         $indikator_sasaran = IndikatorSasaran::all();
-        return view('halaman.detailsasaran', compact('sasaran', 'visi', 'misi', 'indikator', 'indikator_sasaran', 'tujuan'));
+        return view('halaman/detailsasaran', compact('sasaran', 'visi',  'indikator_sasaran'));
     }
 }

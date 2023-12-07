@@ -15,7 +15,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 <!-- Tombol konfirmasi penghapusan -->
-                <form action="/hapus-sasaran" method="POST" enctype="multipart/form-data">
+                <form action="/hapus-sasaran/{{ $sasaran->id }}" method="POST" enctype="multipart/form-data">
                     @method('DELETE') <!-- Menggunakan DELETE method untuk menghapus data -->
                     @csrf
                     <button type="submit" class="btn btn-danger" id="konfirmasiHapusSasaran">Hapus</button>

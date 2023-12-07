@@ -227,7 +227,8 @@
                                 <!-- Isi form untuk mengubah tujuan -->
                                 <form action="/tujuan-update/{{ $t->id }}'" method="POST"
                                     enctype="multipart/form-data">
-                                    @method('PUT') @csrf
+                                    @method('PUT') 
+                                    @csrf
                                     <div class="form-group">
                                         <label for="newTujuan">
                                             Tujuan Baru
@@ -359,7 +360,6 @@
                                                     <i class="fas fa-edit">
                                                     </i>
                                                 </a>
-
                                                 @include('modals.editindikator')
                                                 <a href="/hapus/indikator/{{ $i->id }}" data-tip="delete"
                                                     class="text-danger">

@@ -108,7 +108,7 @@
                                                                 <td>{{ $s->kode }}</td>
                                                                 <td>{{ $s->nama_sasaran }}</td>
                                                                 <td>
-                                                                    <a href="/detail-sasaran/{id}">
+                                                                    <a href="detailsasaran/{{$s->id}}">
                                                                         <button class="btn btn-primary btn-sm">
                                                                             <i class="far fa-eye"></i> Detail
                                                                         </button>

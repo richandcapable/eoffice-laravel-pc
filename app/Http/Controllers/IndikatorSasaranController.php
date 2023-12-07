@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndikatorSasaranController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request, $id){
         // validate form
         // $this->validate($request, [
         //     'indikator'         => 
@@ -33,17 +33,24 @@ class IndikatorSasaranController extends Controller
             'target_tahun_2023'    => $request->target_tahun_2023,
             'target_tahun_2024'    => $request->target_tahun_2024,
             'target_tahun_2025'    => $request->target_tahun_2025,
-            'target_kondisi_akhir' => $request->target_kondisi_akhir
+            'target_kondisi_akhir' => $request->target_kondisi_akhir,
+            'sasaran_id'           => $id
         ]);
 
         //redirect to index
-        return redirect()->route('halaman.detailsasaran')->with(['success' => 'Indikator Berhasil Disimpan!']);
+        return redirect()->route('detailsasaran/{id}')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
-        $i = IndikatorSasaran::find($id);
+        $i = IndikatorSasaran::findorfail($id);
 
         $i->update($request->all());
-        return redirect('/detailsasaran')->with(['success' => 'Indikator Berhasil Diubah!']);
+        return redirect('detailsasaran/{id}')->with(['success' => 'Indikator Berhasil Diubah!']);
+    }
+
+    public function destroy($id){
+        $indikator = IndikatorSasaran::findorfail($id);
+        $indikator->delete();
+        return redirect('detailsasaran/{id}')->with(['info' => 'Indikator Berhasil Dihapus!']);
     }
 }

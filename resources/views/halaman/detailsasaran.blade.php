@@ -47,29 +47,29 @@
                                     <tr>
                                         <td>
                                             <b>Visi</b>
-                                            {{ $visi->first()->visi }}
+                                            <p>{{ $visi->first()->visi }}</p>
                                         </td>
                                         <td>
                                             <b>Tujuan</b>
-                                            {{ $tujuan->first()->tujuan }}
+                                            <p>{{ $sasaran->tujuan }}</p>
                                         </td>
                                     </tr>
                             </div>
                             </td>
                             <td>
                                 <div id="visiContent">
-                                    <p><b>Misi</b></p>
+                                    <b>Misi</b>
                                 </div>
-                                <div class="container justify-content-center">
-                                    <div class="row">
-                                        {{ $misi->first()->misi }}
+                                <div>
+                                    <div>
+                                        {{ $sasaran->misi }}
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <b>Indikator Tujuan</b>
                                 <p>
-                                    {{ $indikator->first()->indikator }}
+                                    {{ $sasaran->indikator_tujuan }}
                                 </p>
                                 </tr>
                                 </table>
@@ -92,8 +92,8 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-cog fa-s"></i><!-- Ikon setelan (setting) -->
                                             </button>
-                                                    <p class="ml-3 text-center"><b>Nama Sasaran :</b>
-                                                        {{ $sasaran->first()->nama_sasaran }}
+                                            <p class="ml-3 text-center"><b>Nama Sasaran :</b>
+                                                {{ $sasaran->nama_sasaran }}
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" data-tip="editsasaran" data-toggle="modal"
                                                     data-target="#editSasaran">Edit</a>
@@ -148,12 +148,15 @@
                                         </td>
                                         <td>
                                             <a data-tip="editIndikator"
-                                                href="/indikatorsasaran-update/{{ $i->id }}"
                                                 class="text-warning" data-toggle="modal" data-target="#editIndikator"><i
                                                     class="fas fa-edit"></i></a>
-                                            <a data-tip="hapusIndikator" href="/hapus-indikator" class="text-danger"
+                                            <!-- Modal Edit Indikator -->
+                                            @include('modals.editindikatords')
+                                            <a data-tip="hapusIndikator" class="text-danger"
                                                 data-target="#hapusIndikator" data-toggle="modal"><i
                                                     class="fas fa-trash"></i></a>
+                                            <!-- Modal Hapus Indikator -->
+                                            @include('modals.hapusindikatords')
                                         </td>
                                     </tr>
                                 @endforeach
@@ -188,10 +191,8 @@
 
             </td>
             </tr>
-            <!-- Modal Edit Indikator -->
-            @include('modals.editindikatords')
-            <!-- Modal Hapus Indikator -->
-            @include('modals.hapusindikatords')
+
+
             </td>
             </tr>
             <!-- Footer -->

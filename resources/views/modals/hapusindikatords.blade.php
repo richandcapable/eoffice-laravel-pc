@@ -12,15 +12,15 @@
                 <!-- Isi pesan konfirmasi penghapusan -->
                 <p>Anda yakin ingin menghapus Indikator ini?</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <!-- Tombol konfirmasi penghapusan -->
-                <form action="/hapus-indikator" method="POST" enctype="multipart/form-data">
-                    @method('DELETE') <!-- Menggunakan DELETE method untuk menghapus data -->
-                    @csrf
+            <!-- Tombol konfirmasi penghapusan -->
+            <form action="/hapus/indikatorsasaran/{{ $i->id }}" method="POST" enctype="multipart/form-data">
+                @method('DELETE') <!-- Menggunakan DELETE method untuk menghapus data -->
+                @csrf
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger" id="konfirmasiHapusTujuan">Hapus</button>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>

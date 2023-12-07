@@ -16,7 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/indikatorsasaran-store" method="POST">
+                <form action="/indikatorsasaran-store/{id}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="indikator"><b>Nama Indikator</b></label>

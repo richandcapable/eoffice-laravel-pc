@@ -54,8 +54,9 @@ Route::post('/indikator-store/{id}', [IndikatorController::class, 'store']);
 Route::put('/indikator-update/{id}', [IndikatorController::class, 'update']);
 Route::get('/hapus/indikator/{id}', [IndikatorController::class, 'destroy'])->name('hapus');
 //INDIKATOR SASARAN 
-Route::post('/indikatorsasaran-store', [IndikatorSasaranController::class, 'store']);
+Route::post('/indikatorsasaran-store/{id}', [IndikatorSasaranController::class, 'store']);
 Route::put('/indikatorsasaran-update/{id}', [IndikatorSasaranController::class, 'update']);
+Route::delete('/hapus-indikatorsasaran/{id}', [IndikatorSasaranController::class, 'destroy'])->name('hapus');
 //TUJUAN
 Route::post('/tujuan-store/{id}', [TujuanController::class, 'store']);
 Route::put('/tujuan-update/{id}', [TujuanController::class, 'update']);
@@ -67,4 +68,4 @@ Route::put('/sasaran-update/{id}', [SasaranController::class, 'update']);
 Route::delete('/hapus-sasaran/{id}', [SasaranController::class, 'destroy'])->name('hapus');
 Route::get('/sasaran/search', [SasaranController::class, 'search']);
 //DETAIL SASARAN
-Route::get('/detail-sasaran/{id}', [SasaranController::class, 'detail'])->name('halaman.detailsasaran');
+Route::get('detailsasaran/{id}', [SasaranController::class, 'detail'])->name('halaman.detailsasaran');

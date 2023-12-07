@@ -45,6 +45,6 @@ class Sasaran extends Model
     // Sasaran memiliki banyak IndikatorSasaran melalui Tujuan
     public function indikatorSasarans()
     {
-        return $this->hasMany(IndikatorSasaran::class);
+        return $this->belongsTo(IndikatorSasaran::class);
     }
 }
