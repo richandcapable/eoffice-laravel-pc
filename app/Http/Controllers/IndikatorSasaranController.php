@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\IndikatorSasaran;
+use App\Models\Sasaran;
 use Illuminate\Http\Request;
 
 class IndikatorSasaranController extends Controller
@@ -39,19 +40,21 @@ class IndikatorSasaranController extends Controller
         ]);
 
         //redirect to index
-        return redirect('detailsasaran/1')->with(['success' => 'Indikator Berhasil Disimpan!']);
+        $sasaran = Sasaran::find($id);
+        return redirect('detailsasaran/'.$sasaran->id)->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
         $i = IndikatorSasaran::findorfail($id);
 
         $i->update($request->all());
-        return redirect('detailsasaran/1')->with(['success' => 'Indikator Berhasil Diubah!']);
+        return redirect()->back()->with(['success' => 'Indikator Berhasil Diganti!']);
     }
 
     public function destroy($id){
         $indikator = IndikatorSasaran::findorfail($id);
         $indikator->delete();
-        return redirect('detailsasaran/1')->with(['info' => 'Indikator Berhasil Dihapus!']);
+        $sasaran = Sasaran::find($indikator->sasaran_id);
+        return redirect('detailsasaran/'.$sasaran->id)->with(['info' => 'Indikator Berhasil Dihapus!']);
     }
 }

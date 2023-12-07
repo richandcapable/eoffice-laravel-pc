@@ -18,33 +18,9 @@ class Sasaran extends Model
         'indikator_tujuan',
     ];
 
-    // Sasaran memiliki banyak Visi
-    public function visis()
-    {
-        return $this->hasMany(Visi::class);
-    }
-
-    // Sasaran memiliki banyak Misi melalui Visi
-    public function misis()
-    {
-        return $this->hasOne(Misi::class);
-    }
-
-    // Sasaran memiliki banyak Indikator melalui Misi
-    public function indikators()
-    {
-        return $this->hasOne(Indikator::class);
-    }
-
-    // Sasaran memiliki banyak Tujuan melalui Indikator
-    public function tujuans()
-    {
-        return $this->hasOne(Tujuan::class);
-    }
-
     // Sasaran memiliki banyak IndikatorSasaran melalui Tujuan
     public function indikatorSasarans()
     {
-        return $this->belongsTo(IndikatorSasaran::class);
+        return $this->hasMany(IndikatorSasaran::class);
     }
 }

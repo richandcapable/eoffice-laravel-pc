@@ -25,19 +25,8 @@ class IndikatorSasaran extends Model
         'sasaran_id'
     ];
 
-    public function indikator()
-    {
-        return $this->belongsTo(Indikator::class);
-    }
-
-    // IndikatorSasaran dapat memiliki banyak Tujuan
-    public function tujuans()
-    {
-        return $this->hasMany(Tujuan::class);
-    }
-
     public function sasaran()
     {
-        return $this->hasMany(Sasaran::class);
+        return $this->belongsTo(Sasaran::class);
     }
 }

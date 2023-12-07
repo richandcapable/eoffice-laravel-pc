@@ -85,7 +85,10 @@ class SasaranController extends Controller
         // $misi = Misi::all();
         // $tujuan = Tujuan::all();
         // $indikator = Indikator::all();
-        $indikator_sasaran = IndikatorSasaran::all();
-        return view('halaman/detailsasaran', compact('sasaran', 'visi',  'indikator_sasaran'));
+       
+        $sasaran = Sasaran::with('indikatorSasarans')->find($id);
+        $indikatorSasarans = $sasaran->indikatorSasarans;
+
+        return view('halaman/detailsasaran', compact('sasaran', 'visi', 'indikatorSasarans'));
     }
 }

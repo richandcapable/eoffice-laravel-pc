@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -114,7 +115,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($indikator_sasaran as $i)
+
+                                @foreach ($sasaran->indikatorSasarans as $i)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
@@ -156,34 +158,28 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
                                 <!-- Tambahkan baris Indikator lainnya sesuai kebutuhan -->
                             </tbody>
                         </table>
-                        <div class="text-right">
-                            <style>
-                                .btn-outline-primary {
-                                    background-color: rgb(8, 164, 196);
-                                    color: white;
-                                }
-                            </style>
-                            <button type="button" class="btn btn-outline-secondary"><a href="/sasaran"
-                                    class="black">Kembali</a></button>
-                            <button class="btn btn-outline-primary" data-toggle="modal"
-                                data-target="#tambahIndikatorModal"><i class="fas fa-plus"></i> Tambah
-                                Indikator</button>
+                        <div class="text-right mt-3">
+                            <button type="button" class="btn btn-outline-secondary">
+                                <a href="/sasaran" class="text-dark">Kembali</a>
+                            </button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#tambahIndikatorModal">
+                                <i class="fas fa-plus"></i> Tambah Indikator
+                            </button>
                         </div>
-
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
 
             <!-- Modal Tambah Indikator -->
             @include('modals.tambahindikatords')
-
             </td>
             </tr>
-
-
             </td>
             </tr>
             <!-- Footer -->
