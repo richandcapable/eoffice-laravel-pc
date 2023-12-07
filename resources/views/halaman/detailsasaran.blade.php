@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="img/Banjarbaru.png" type="image/x-icon">
-    <title>EOffice Kota Banjarbaru</title>
-
-    <!-- Custom fonts for this template -->
+    <title>
+        EOffice Kota Banjarbaru
+    </title>
+    <!-- Custom fonts and styles -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
@@ -147,13 +143,13 @@
                                             {{ $i->satuan_pengukuran }}
                                         </td>
                                         <td>
-                                            <a data-tip="editIndikator"
-                                                class="text-warning" data-toggle="modal" data-target="#editIndikator"><i
+                                            <a data-tip="editIndikator" class="text-warning" data-toggle="modal"
+                                                data-target="#editIndikator{{ $i->id }}"><i
                                                     class="fas fa-edit"></i></a>
                                             <!-- Modal Edit Indikator -->
                                             @include('modals.editindikatords')
                                             <a data-tip="hapusIndikator" class="text-danger"
-                                                data-target="#hapusIndikator" data-toggle="modal"><i
+                                                data-target="#hapusIndikator{{ $i->id }}" data-toggle="modal"><i
                                                     class="fas fa-trash"></i></a>
                                             <!-- Modal Hapus Indikator -->
                                             @include('modals.hapusindikatords')
@@ -170,18 +166,13 @@
                                     color: white;
                                 }
                             </style>
-                            <button type="button" class="btn btn-outline-secondary"
-                                onclick="kembaliKeHalamanSasaran()">Kembali</button>
+                            <button type="button" class="btn btn-outline-secondary"><a href="/sasaran"
+                                    class="black">Kembali</a></button>
                             <button class="btn btn-outline-primary" data-toggle="modal"
                                 data-target="#tambahIndikatorModal"><i class="fas fa-plus"></i> Tambah
                                 Indikator</button>
                         </div>
 
-                        <script>
-                            function kembaliKeHalamanSasaran() {
-                                window.location.href = "sasaran";
-                            }
-                        </script>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="editIndikator" tabindex="-1" role="dialog" aria-labelledby="editIndikatorModalLabel"
+<div class="modal fade" id="editIndikator{{ $i->id }}" tabindex="-1" role="dialog" aria-labelledby="editIndikatorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -34,7 +34,7 @@
                             <option value="Sasaran">Sasaran</option>
                             <option value="SR">SR</option>
                             <option value="Kali">Kali</option>
-                            <option value="minggu sekali dalam setahun">minggu sekali dalam setahun
+                            <option value="Minggu sekali dalam setahun">Minggu sekali dalam setahun
                             </option>
                             <option value="Forum/Kampung">Forum/Kampung</option>
                             <option value="Kelompok">Kelompok</option>

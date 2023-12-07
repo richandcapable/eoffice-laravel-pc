@@ -25,6 +25,7 @@ class IndikatorSasaranController extends Controller
         //create indikator
 
         IndikatorSasaran::create([
+            'sasaran_id'           => $id,
             'indikator'            => $request->indikator,
             'satuan_pengukuran'    => $request->satuan_pengukuran,
             'target_kondisi_awal'  => $request->target_kondisi_awal,
@@ -34,23 +35,23 @@ class IndikatorSasaranController extends Controller
             'target_tahun_2024'    => $request->target_tahun_2024,
             'target_tahun_2025'    => $request->target_tahun_2025,
             'target_kondisi_akhir' => $request->target_kondisi_akhir,
-            'sasaran_id'           => $id
+            
         ]);
 
         //redirect to index
-        return redirect()->route('detailsasaran/{id}')->with(['success' => 'Indikator Berhasil Disimpan!']);
+        return redirect('detailsasaran/1')->with(['success' => 'Indikator Berhasil Disimpan!']);
     }
 
     public function update(Request $request,$id){
         $i = IndikatorSasaran::findorfail($id);
 
         $i->update($request->all());
-        return redirect('detailsasaran/{id}')->with(['success' => 'Indikator Berhasil Diubah!']);
+        return redirect('detailsasaran/1')->with(['success' => 'Indikator Berhasil Diubah!']);
     }
 
     public function destroy($id){
         $indikator = IndikatorSasaran::findorfail($id);
         $indikator->delete();
-        return redirect('detailsasaran/{id}')->with(['info' => 'Indikator Berhasil Dihapus!']);
+        return redirect('detailsasaran/1')->with(['info' => 'Indikator Berhasil Dihapus!']);
     }
 }

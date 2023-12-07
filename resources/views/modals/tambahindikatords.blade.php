@@ -16,7 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/indikatorsasaran-store/{id}" method="POST">
+                <form action="/indikatorsasaran-store/{{$sasaran->id}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="indikator"><b>Nama Indikator</b></label>
@@ -33,7 +33,7 @@
                             <option value="Sasaran">Sasaran</option>
                             <option value="SR">SR</option>
                             <option value="Kali">Kali</option>
-                            <option value="minggu sekali dalam setahun">minggu sekali dalam setahun
+                            <option value="Minggu sekali dalam setahun">Minggu sekali dalam setahun
                             </option>
                             <option value="Forum/Kampung">Forum/Kampung</option>
                             <option value="Kelompok">Kelompok</option>

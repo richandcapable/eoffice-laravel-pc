@@ -1,4 +1,4 @@
-<div class="modal fade" id="hapusIndikator" tabindex="-1" role="dialog" aria-labelledby="hapusIndikatorModalLabel"
+<div class="modal fade" id="hapusIndikator{{ $i->id }}" tabindex="-1" role="dialog" aria-labelledby="hapusIndikatorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -13,7 +13,7 @@
                 <p>Anda yakin ingin menghapus Indikator ini?</p>
             </div>
             <!-- Tombol konfirmasi penghapusan -->
-            <form action="/hapus/indikatorsasaran/{{ $i->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/hapus-indikatorsasaran/{{ $i->id }}" method="POST" enctype="multipart/form-data">
                 @method('DELETE') <!-- Menggunakan DELETE method untuk menghapus data -->
                 @csrf
                 <div class="modal-footer">
