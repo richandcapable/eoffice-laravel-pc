@@ -355,8 +355,8 @@
                                             </td>
                                             <td>
                                                 <a data-tip="editIndikator"
-                                                    href="/indikator-update/{{ $i->id }}" class="text-warning"
-                                                    data-toggle="modal" data-target="#editIndikatorModal">
+                                                     class="text-warning"
+                                                    data-toggle="modal" data-target="#editIndikatorModal{{ $i->id }}">
                                                     <i class="fas fa-edit">
                                                     </i>
                                                 </a>

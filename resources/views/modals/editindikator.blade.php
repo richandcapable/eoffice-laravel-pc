@@ -1,4 +1,4 @@
- <div class="modal fade" id="editIndikatorModal" tabindex="-1" role="dialog" aria-labelledby="editIndikatorModalLabel"
+ <div class="modal fade" id="editIndikatorModal{{ $i->id }}" tabindex="-1" role="dialog" aria-labelledby="editIndikatorModalLabel"
      aria-hidden="true">
      <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
@@ -30,8 +30,7 @@
                      <div class="form-group">
                          <label for="satuanPengukuran">Satuan Pengukuran:</label>
                          <select class="form-control" name="satuan_pengukuran">
-                             <option selected="selected" disabled="true">Pilih
-                                 Satuan Pengukuran</option>
+                             <option selected="selected" value="{{ $i->satuan_pengukuran }}">{{ $i->satuan_pengukuran }}</option>
                              <option value="Lokasi">Lokasi</option>
                              <option value="Kegiatan">Kegiatan</option>
                              <option value="Titik">Titik</option>
@@ -82,7 +81,7 @@
                                          <tr>
                                              <td><input type="text" class="form-control"
                                                      placeholder="Masukkan Target Kondisi Awal"
-                                                     name="target_kondisi_awal">
+                                                     name="target_kondisi_awal" value="{{ $i->target_kondisi_awal }}">
                                              </td>
                                          </tr>
                                      </tbody>
@@ -98,7 +97,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target 2021" name="target_tahun_2021"></td>
+                                                     placeholder="Masukkan Target 2021" name="target_tahun_2021" value="{{ $i->target_tahun_2021 }}"></td>
                                          </tr>
                                      </tbody>
                                  </table>
@@ -113,7 +112,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target 2022" name="target_tahun_2022"></td>
+                                                     placeholder="Masukkan Target 2022" name="target_tahun_2022" value="{{ $i->target_tahun_2022 }}"></td>
                                          </tr>
                                      </tbody>
                                  </table>
@@ -128,7 +127,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target 2023" name="target_tahun_2023"></td>
+                                                     placeholder="Masukkan Target 2023" name="target_tahun_2023" value="{{ $i->target_tahun_2023 }}"></td>
                                          </tr>
                                      </tbody>
                                  </table>
@@ -143,7 +142,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target 2024" name="target_tahun_2024"></td>
+                                                     placeholder="Masukkan Target 2024" name="target_tahun_2024" value="{{ $i->target_tahun_2024 }}"></td>
                                          </tr>
                                      </tbody>
                                  </table>
@@ -158,7 +157,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target 2025" name="target_tahun_2025"></td>
+                                                     placeholder="Masukkan Target 2025" name="target_tahun_2025" value="{{ $i->target_tahun_2025 }}"></td>
                                          </tr>
                                      </tbody>
                                  </table>
@@ -173,7 +172,7 @@
                                      <tbody>
                                          <tr>
                                              <td><input type="text" class="form-control"
-                                                     placeholder="Masukkan Target Akhir" name="target_kondisi_akhir">
+                                                     placeholder="Masukkan Target Akhir" name="target_kondisi_akhir" value="{{ $i->target_kondisi_akhir}}">
                                              </td>
                                          </tr>
                                      </tbody>
