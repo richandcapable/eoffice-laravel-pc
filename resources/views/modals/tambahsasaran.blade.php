@@ -49,7 +49,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan Sasaran</button>
+                <button id="tambahSasaranBtn" type="submit" class="btn text-white">Simpan</button>
             </div>
         </form>
         </div>

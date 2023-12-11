@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +8,9 @@
     <meta name="author" content="">
     <link rel="icon" href="img/Banjarbaru.png" type="image/x-icon">
     <title>EOffice Kota Banjarbaru</title>
-
     <!-- Custom fonts for this template -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
@@ -44,10 +39,8 @@
                                     <tr>
                                         <td>
                                             <div class="text-center">
-                                                <button class="btn btn-primary btn-block" data-toggle="modal"
-                                                    data-target="#tambahSasaran">
-                                                    <i class="fa fa-plus"></i>Tambah Sasaran
-                                                </button>
+                                                <button id="tambahSasaranBtn" class="btn btn-block mt-4 mb-4 text-white" data-toggle="modal" data-target="#tambahSasaran">
+                                                    <i class="fa fa-plus"></i>Tambah Sasaran</button>
                                             </div>
 
                                             @include('modals.tambahsasaran')
@@ -60,15 +53,10 @@
                                                 <div class="row">
                                                     <div class="col-md-8">
                                                         <div class="input-group mb-3">
-                                                            <form action="/sasaran/search" class="input-group"
-                                                                method="GET">
-                                                                <input type="search" name="search"
-                                                                    class="form-control"
-                                                                    placeholder="Cari berdasarkan Nama Sasaran"
-                                                                    aria-label="Recipient's username"
-                                                                    aria-describedby="basic-addon2">
+                                                            <form action="/sasaran/search" class="input-group" method="GET">
+                                                                <input type="search" name="search" class="form-control" placeholder="Cari berdasarkan Nama Sasaran" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
-                                                                    <button class="btn btn-outline-primary"
+                                                                    <button id="searchBtn" class="btn btn-outline-primary"
                                                                         type="submit">
                                                                         <i class="fas fa-search"></i>
                                                                     </button>

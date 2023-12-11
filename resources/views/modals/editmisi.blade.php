@@ -18,8 +18,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button id="ubahMisiBtn" type="submit" class="btn text-white">Simpan</button>
             </div>
             </form>
         </div>

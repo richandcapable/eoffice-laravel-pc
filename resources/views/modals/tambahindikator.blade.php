@@ -182,7 +182,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button id="simpanIndikatorBtn" type="submit" class="btn text-white">Simpan</button>
             </div>
         </div>
     </div>

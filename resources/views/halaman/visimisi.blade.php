@@ -5,20 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="img/Banjarbaru.png" type="image/x-icon">
-    <title>
-        EOffice Kota Banjarbaru
-    </title>
-    <!-- Custom fonts and styles -->
+    <title>EOffice Kota Banjarbaru</title>
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel= "stylesheet" href="visimisi.css">
 </head>
 
 <body id="page-top">
-    @include('sweetalert::alert')
-
     <div id="wrapper">
         <!-- Sidebar -->
         @include('layouts.sidebar')
@@ -43,7 +37,7 @@
                                                 <b>
                                                     VISI
                                                     <button id="editVisiBtn"
-                                                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm rounded-pill float-right"
+                                                        class="d-none d-sm-inline-block btn btn-sm shadow-sm rounded-pill float-right text-white"
                                                         data-toggle="modal" data-target="#editVisiModal">
                                                         Edit Visi
                                                     </button>
@@ -81,13 +75,13 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>
-                                                        No.
+                                                    <th style="border:none; border-bottom: 2px solid #ddd;">
+                                                        #
                                                     </th>
-                                                    <th>
+                                                    <th style="border:none; border-bottom: 2px solid #ddd;">
                                                         Nama Misi
                                                     </th>
-                                                    <th>
+                                                    <th style="border:none; border-bottom: 2px solid #ddd;">
                                                         Opsi
                                                     </th>
                                                 </tr>
@@ -95,24 +89,26 @@
                                             <tbody>
                                                 @foreach ($misi as $m)
                                                     <tr>
-                                                        <td>
+                                                        <td style="border: none;">
                                                             {{ $loop->iteration }}
                                                         </td>
-                                                        <td>
+                                                        <td style="border: none;">
                                                             {{ $m->misi }}
                                                         </td>
-                                                        <td>
+                                                        <td style="border: none;">
                                                             <a data-tip="editMisi"
                                                                 href="{{ url('misi/edit') }}/{{ $m->id }}"
-                                                                class="text-warning" data-toggle="modal"
+                                                                class="text-warning" 
+                                                                data-toggle="modal"
                                                                 data-target="#editMisi{{ $m->id }}">
-                                                                <i class="fas fa-edit">
+                                                                <i class="fa-solid fa-pencil" style="border: 1px solid #ffc107; outline:none; border-radius: 50%; padding: 7px; font-size: 11px">
                                                                 </i>
                                                             </a>
+
                                                             @include('modals.editmisi')
                                                             <a href="/hapus/misi/{{ $m->id }}"
-                                                                class="btn btn-danger btn-flat btn-sm ml-1 btn-delete">
-                                                                <i class="fa fa-trash">
+                                                                class="text-danger btn-delete rounded-circle">
+                                                                <i class="fa-solid fa-trash-can" style="border: 1px solid #ff0000; outline:none; border-radius: 50%; padding: 7px; font-size: 11px">
                                                                 </i>
                                                             </a>
                                                         </td>
@@ -123,7 +119,7 @@
                         </table>
                     </div>
                     <div class="text-left">
-                        <button id="tambahMisiBtn" class="btn btn-outline-success" style="margin-top: 10px;"
+                        <button id="tambahMisiBtn" class="btn" style="margin-top: 5px;"
                             data-toggle="modal" data-target="#tambahMisiModal">
                             <i class="fas fa-plus">
                             </i>
@@ -161,7 +157,7 @@
                                 <tr>
                                     <td>
                                         <div class="text-left">
-                                            <button class="btn btn-outline-success" style="margin-top: 10px;"
+                                            <button id="tambahTujuanBtn" class="btn" style="margin-top: 5px;"
                                                 data-toggle="modal"
                                                 data-target="#tambahTujuanModal{{ $m->id }}">
                                                 <i class="fas fa-plus">
@@ -209,42 +205,37 @@
                 </tr>
 
                 <!-- Modal Edit Tujuan -->
-                <div class="modal fade" id="editTujuan{{ $t->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="editTujuanModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editTujuan{{ $t->id }}" tabindex="-1" role="dialog" aria-labelledby="editTujuanModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editTujuanModalLabel">
-                                    Edit Tujuan
-                                </h5>
+                                <h5 class="modal-title" id="editTujuanModalLabel">Edit Tujuan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">
-                                        &times;
-                                    </span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <!-- Isi form untuk mengubah tujuan -->
-                                <form action="/tujuan-update/{{ $t->id }}'" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="/tujuan-update/{{ $t->id }}'" method="POST" enctype="multipart/form-data">
                                     @method('PUT') 
                                     @csrf
                                     <div class="form-group">
-                                        <label for="newTujuan">
-                                            Tujuan Baru
-                                        </label>
-                                        <input type="text" class="form-control" name="tujuan"
-                                            placeholder="Masukkan tujuan baru" value="{{ $t->tujuan }}">
+                                        <label for="misi">Misi</label>
+                                        <p>{{ $m->misi }}</p>
                                     </div>
-                                    <button type="submit" class="btn btn-success">
-                                        Simpan Perubahan
-                                    </button>
+                                    <div class="form-group">
+                                        <label for="newTujuan">Tujuan</label>
+                                        <input type="text" class="form-control" name="tujuan" placeholder="Masukkan tujuan baru" value="{{ $t->tujuan }}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button id="ubahTujuanBtn" type="submit" class="btn text-white">Simpan</button>
+                                    </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- Modal Hapus Tujuan -->
                 <div class="modal fade" id="hapusTujuan{{ $t->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="hapusTujuanModalLabel" aria-hidden="true">
@@ -357,13 +348,13 @@
                                                 <a data-tip="editIndikator"
                                                      class="text-warning"
                                                     data-toggle="modal" data-target="#editIndikatorModal{{ $i->id }}">
-                                                    <i class="fas fa-edit">
+                                                    <i class="fa-solid fa-pencil" style="border: 1px solid #ffc107; outline:none; border-radius: 50%; padding: 7px; font-size: 11px">
                                                     </i>
                                                 </a>
                                                 @include('modals.editindikator')
                                                 <a href="/hapus/indikator/{{ $i->id }}" data-tip="delete"
                                                     class="text-danger">
-                                                    <i class="fas fa-trash">
+                                                    <i class="fa-solid fa-trash-can" style="border: 1px solid #ff0000; outline:none; border-radius: 50%; padding: 7px; font-size: 11px">
                                                     </i>
                                                 </a>
                                             </td>
@@ -373,7 +364,7 @@
             </table>
         </div>
         <div class="text-right">
-            <button class="btn btn-outline-success" style="margin-top: 10px;" data-toggle="modal"
+            <button id="tambahIndikatorBtn" class="btn" style="margin-top: 10px;" data-toggle="modal"
                 data-target="#tambahIndikatorModal{{ $t->id }}">
                 <i class="fas fa-plus">
                 </i>
